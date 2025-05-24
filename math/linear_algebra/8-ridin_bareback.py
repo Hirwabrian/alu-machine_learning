@@ -14,7 +14,7 @@ def mat_mul(mat1, mat2):
         mat2 (list of lists): The second matrix.
 
     Returns:
-        list of lists or None: The result of mat1 × mat2, 
+        list of lists or None: The result of mat1 × mat2,
         or None if shapes are incompatible.
     """
     if len(mat1[0]) != len(mat2):
