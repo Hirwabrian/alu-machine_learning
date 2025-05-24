@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+
+"""
+Module to compute the shape of a nested list matrix.
+"""
+
 def matrix_shape(matrix):
     shape = []
     while isinstance(matrix, list):
