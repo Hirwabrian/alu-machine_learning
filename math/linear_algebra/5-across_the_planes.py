@@ -1,5 +1,21 @@
 #!/usr/bin/env python3
+
+"""
+Module for element-wise addition of two 2D matrices.
+"""
+
+
 def add_matrices2D(mat1, mat2):
+    """
+    Adds two 2D matrices element-wise.
+
+    Args:
+        mat1 (list of lists): First matrix.
+        mat2 (list of lists): Second matrix.
+
+    Returns:
+        list of lists or None: The resulting matrix or None if shapes differ.
+    """
     if len(mat1) != len(mat2):
         return None
 
