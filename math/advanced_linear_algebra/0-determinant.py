@@ -6,6 +6,19 @@ Calculates the determinant of a matrix.
 
 
 def determinant(matrix):
+    """
+    Calculates the determinant of a square matrix.
+
+    Args:
+        matrix (list of lists): The input matrix.
+
+    Returns:
+        int or float: The determinant value.
+
+    Raises:
+        TypeError: If matrix is not a list of lists.
+        ValueError: If matrix is not square.
+    """
     if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a list of lists")
     if matrix == [[]]:
