@@ -1,11 +1,26 @@
+#!/usr/bin/env python3
 """
 Calculates the minor matrix of a matrix.
 """
-import importlib
 
+
+import importlib
 det = importlib.import_module("0-determinant")
 
 def minor(matrix):
+    """
+    Computes the minor matrix of a square matrix.
+
+    Args:
+        matrix (list of lists): The input matrix.
+
+    Returns:
+        list of lists: The minor matrix.
+
+    Raises:
+        TypeError: If matrix is not a list of lists.
+        ValueError: If matrix is not a non-empty square matrix.
+    """
     if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a list of lists")
     if len(matrix) == 0 or any(len(row) != len(matrix) for row in matrix):
