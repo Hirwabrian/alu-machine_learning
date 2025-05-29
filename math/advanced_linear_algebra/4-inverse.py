@@ -5,32 +5,60 @@ Calculates the inverse of a matrix.
 """
 
 
-import importlib
-det_mod = importlib.import_module("0-determinant")
-adj_mod = importlib.import_module("3-adjugate")
+def determinant(matrix):
+    """Calculates the determinant of a matrix."""
+    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
+        raise TypeError("matrix must be a list of lists")
+    if matrix == [[]]:
+        return 1
+    if len(matrix) == 0 or any(len(row) != len(matrix) for row in matrix):
+        raise ValueError("matrix must be a square matrix")
+    if len(matrix) == 1:
+        return matrix[0][0]
+    if len(matrix) == 2:
+        return matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0]
+    
+    return sum(matrix[0][i] * determinant([r[:i] + r[i+1:] for r in matrix[1:]]) * (-1)**i for i in range(len(matrix)))
+
+def cofactor(matrix):
+    """Calculates the cofactor matrix of a square matrix."""
+    if not isinstance(matrix, list) or matrix == [] or not all(isinstance(row, list) for row in matrix):
+        raise TypeError("matrix must be a list of lists")
+    if any(len(row) != len(matrix) for row in matrix):
+        raise ValueError("matrix must be a non-empty square matrix")
+    if len(matrix) == 1:
+        return [[1]]
+    cof = []
+    for i in range(len(matrix)):
+        row = []
+        for j in range(len(matrix)):
+            sub = [r[:j] + r[j+1:] for k, r in enumerate(matrix) if k != i]
+            row.append(determinant(sub) * (-1) ** (i + j))
+        cof.append(row)
+    return cof
+
+def adjugate(matrix):
+    """Calculates the adjugate of a square matrix."""
+    return [list(row) for row in zip(*cofactor(matrix))]
 
 def inverse(matrix):
     """
-    Calculates the inverse of a matrix using adjugate and determinant.
+    Calculates the inverse of a square matrix.
 
     Args:
-        matrix (list of lists): The input matrix.
+        matrix (list of lists): The matrix to invert.
 
     Returns:
-        list of lists: Inverse of the matrix or None if singular.
-
-    Raises:
-        TypeError: If matrix is not a list of lists.
-        ValueError: If matrix is not a non-empty square matrix.
+        list of lists or None: Inverted matrix, or None if singular.
     """
     if not isinstance(matrix, list) or matrix == [] or not all(isinstance(row, list) for row in matrix):
         raise TypeError("matrix must be a list of lists")
-    if len(matrix) == 0 or any(len(row) != len(matrix) for row in matrix):
+    if any(len(row) != len(matrix) for row in matrix):
         raise ValueError("matrix must be a non-empty square matrix")
 
-    det = det_mod.determinant(matrix)
+    det = determinant(matrix)
     if det == 0:
         return None
-
-    adj = adj_mod.adjugate(matrix)
+    adj = adjugate(matrix)
     return [[elem / det for elem in row] for row in adj]
+    
