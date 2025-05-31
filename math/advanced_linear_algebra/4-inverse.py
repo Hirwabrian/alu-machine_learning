@@ -17,8 +17,9 @@ def determinant(matrix):
         return matrix[0][0]
     if len(matrix) == 2:
         return matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0]
-    
+
     return sum(matrix[0][i] * determinant([r[:i] + r[i+1:] for r in matrix[1:]]) * (-1)**i for i in range(len(matrix)))
+
 
 def cofactor(matrix):
     """Calculates the cofactor matrix of a square matrix."""
@@ -37,9 +38,11 @@ def cofactor(matrix):
         cof.append(row)
     return cof
 
+
 def adjugate(matrix):
     """Calculates the adjugate of a square matrix."""
     return [list(row) for row in zip(*cofactor(matrix))]
+
 
 def inverse(matrix):
     """
@@ -61,4 +64,3 @@ def inverse(matrix):
         return None
     adj = adjugate(matrix)
     return [[elem / det for elem in row] for row in adj]
-    

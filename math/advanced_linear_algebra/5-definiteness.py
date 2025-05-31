@@ -6,6 +6,7 @@ Determines the definiteness of a numpy matrix.
 
 import numpy as np
 
+
 def definiteness(matrix):
     """
     Determines the definiteness of a matrix using its eigenvalues.

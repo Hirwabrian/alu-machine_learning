@@ -17,8 +17,9 @@ def determinant(matrix):
         return matrix[0][0]
     if len(matrix) == 2:
         return matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0]
-    
+
     return sum(matrix[0][i] * determinant([row[:i] + row[i+1:] for row in matrix[1:]]) * (-1)**i for i in range(len(matrix)))
+
 
 def cofactor(matrix):
     """Calculates the cofactor matrix of a square matrix."""
@@ -28,7 +29,7 @@ def cofactor(matrix):
         raise ValueError("matrix must be a non-empty square matrix")
     if len(matrix) == 1:
         return [[1]]
-    
+
     cof = []
     for i in range(len(matrix)):
         row = []
@@ -37,6 +38,7 @@ def cofactor(matrix):
             row.append(determinant(sub) * (-1) ** (i + j))
         cof.append(row)
     return cof
+
 
 def adjugate(matrix):
     """
