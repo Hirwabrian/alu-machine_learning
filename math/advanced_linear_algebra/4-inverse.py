@@ -7,7 +7,8 @@ Calculates the inverse of a matrix.
 
 def determinant(matrix):
     """Calculates the determinant of a matrix."""
-    if not isinstance(matrix, list) or not all(isinstance(row, list) for row in matrix):
+    if not isinstance(matrix, list) or not all(isinstance(row, list)
+                                               for row in matrix):
         raise TypeError("matrix must be a list of lists")
     if matrix == [[]]:
         return 1
@@ -23,7 +24,8 @@ def determinant(matrix):
 
 def cofactor(matrix):
     """Calculates the cofactor matrix of a square matrix."""
-    if not isinstance(matrix, list) or matrix == [] or not all(isinstance(row, list) for row in matrix):
+    if not isinstance(matrix, list) or matrix == [] or not all(isinstance(row, list)
+                                                               for row in matrix):
         raise TypeError("matrix must be a list of lists")
     if any(len(row) != len(matrix) for row in matrix):
         raise ValueError("matrix must be a non-empty square matrix")
@@ -54,7 +56,8 @@ def inverse(matrix):
     Returns:
         list of lists or None: Inverted matrix, or None if singular.
     """
-    if not isinstance(matrix, list) or matrix == [] or not all(isinstance(row, list) for row in matrix):
+    if not isinstance(matrix, list) or matrix == [] or not all(isinstance(row, list)
+                                                               for row in matrix):
         raise TypeError("matrix must be a list of lists")
     if any(len(row) != len(matrix) for row in matrix):
         raise ValueError("matrix must be a non-empty square matrix")
