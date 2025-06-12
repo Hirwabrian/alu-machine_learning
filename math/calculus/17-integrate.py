@@ -1,6 +1,9 @@
+#!/usr/bin/env python3
+
 """
 Returns the integral of a polynomial with optional constant of integration.
 """
+
 
 def poly_integral(poly, C=0):
     if not isinstance(poly, list) or not isinstance(C, (int, float)):
