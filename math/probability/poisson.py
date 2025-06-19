@@ -22,7 +22,6 @@ class Poisson:
         if k < 0:
             return 0
         e = 2.7182818285
-        lambtha = self.lambtha
         factorial = 1
         for i in range(k):
             factorial *= (i + 1)
