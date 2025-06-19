@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """ defines Normal class that represents normal distribution """
 
 

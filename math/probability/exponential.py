@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """ defines Exponential class that represents exponential distribution """
 
 
